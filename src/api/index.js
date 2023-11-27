@@ -10,9 +10,6 @@ app.use(cors());
 const PORT = process.env.PORT;
 
 /* Controller */
-app.get("/", (req, res) => {
-  res.json("Hello ! This server is created by Fiantso Harena");
-});
 app.get('/book', async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM book');
@@ -36,20 +33,24 @@ app.get('/book/:id', async (req, res) => {
     res.status(500).send('Error while receiving book');
   }
 });
-app.post('/book', (req, res) => {
-  const q = 'INSERT INTO books(`title`, `desc`, `price`, `cover`) VALUES (?)';
-
-  const values = [
-    req.body.title,
-    req.body.desc,
-    req.body.price,
-    req.body.cover,
-  ];
-
-  db.query(q, [values], (err, data) => {
-    if (err) return res.send(err);
-    return res.json(data);
-  });
+app.post('/book', async (req, res) => {
+  const { title, description, price, cover } = req.body;
+  try {
+    const insertQuery = `
+        INSERT INTO book (title, description, price, cover) 
+        VALUES ($1, $2, $3, $4) 
+        RETURNING *
+      `;
+    const { rows } = await db.query(insertQuery, [
+      title,
+      description,
+      price,
+      cover,
+    ]);
+    res.status(201).json(rows[0]);
+  } catch (error) {
+    res.status(500).send('Error while creating book');
+  }
 });
 app.put('/book/:id', async (req, res) => {
   const bookId = parseInt(req.params.id);
