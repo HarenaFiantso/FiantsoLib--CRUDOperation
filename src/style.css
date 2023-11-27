@@ -13,7 +13,7 @@
   padding: 50px 0;
 }
 .title span {
-    color: rgb(128, 92, 82);
+  color: rgb(128, 92, 82);
 }
 .books {
   display: grid;
@@ -60,12 +60,32 @@
   gap: 10px;
 }
 .book__button button {
-    padding: 5px 20px;
-    border: none;
-    border-radius: 10px;
-    background-color: rgb(128, 92, 82);
-    color: white;
-    font-weight: bold;
-    box-shadow: 0px 9px 25px -9px #276873;
-    cursor: pointer;
+  padding: 5px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(128, 92, 82);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0px 9px 25px -9px #276873;
+  cursor: pointer;
+}
+.addBook {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 20px;
+  background-color: #fab78e;
+  color: black;
+  text-transform: uppercase;
+  margin: 20px;
+  font-weight: bold;
+  border: 2px solid #fab78e;
+  box-shadow: 0px 9px 25px -9px #3b3b3b;
+  cursor: pointer;
+  transition: .2s all ease-in-out;
+}
+
+.addBook:hover {
+  background-color: transparent;
+  color: white;
 }
