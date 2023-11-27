@@ -3,7 +3,7 @@ import BookPage from './pages/bookPage/BookPage';
 import AddBookPage from './pages/addBookPage/AddBookPage';
 import UpdateBookPage from './pages/updateBookPage/UpdateBookPage';
 
-function App() {
+const App = () => {
   return (
     <>
       <BrowserRouter>
