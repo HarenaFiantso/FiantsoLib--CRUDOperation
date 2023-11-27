@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BookPage from './pages/bookPage/BookPage';
 import AddBookPage from './pages/addBookPage/AddBookPage';
 import UpdateBookPage from './pages/updateBookPage/UpdateBookPage';
+import './style.css';
 
 const App = () => {
   return (

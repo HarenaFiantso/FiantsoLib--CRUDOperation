@@ -18,18 +18,22 @@ const BookPage: React.FC = () => {
 
   return (
     <>
-      <h1>
+      <h1 className="title">
         Welcome to <span>FiantsoLib</span>
       </h1>
       <div className="books">
         {books.map((book) => (
           <div key={book.id} className="book">
-            {book.cover && <img src={book.cover} alt="book cover" />}
-            <h2>{book.title}</h2>
-            <p>{book.description}</p>
-            <span>$ {book.price}</span>
-            <button className="delete">Delete</button>
-            <button className="update">Update</button>
+            {book.cover && (
+              <img src={book.cover} alt="book cover" className="img" />
+            )}
+            <h2 className="book__title">{book.title}</h2>
+            <p className="book__description">{book.description}</p>
+            <span className='book__price'>$ {book.price}</span>
+            <div className='book__button'>
+              <button className="delete">Delete</button>
+              <button className="update">Update</button>
+            </div>
           </div>
         ))}
       </div>
