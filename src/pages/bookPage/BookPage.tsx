@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import Book from '../../type/BookType';
 import axios from 'axios';
 import Typed from 'typed.js';
@@ -44,7 +45,7 @@ const BookPage: React.FC = () => {
   return (
     <>
       <h1 className="title">
-        Welcome to <span ref={el}>FiantsoLib</span>
+        This is <span ref={el}>FiantsoLib</span>
       </h1>
       <div className="books">
         {books.map((book) => (
@@ -59,7 +60,11 @@ const BookPage: React.FC = () => {
               <button className="delete" onClick={() => handleDelete(book.id)}>
                 Delete
               </button>
-              <button className="update">Update</button>
+              <button className="update">
+                <Link to={`/update/${book.id}`} style={{ color: 'inherit' }}>
+                  Update
+                </Link>
+              </button>
             </div>
           </div>
         ))}
