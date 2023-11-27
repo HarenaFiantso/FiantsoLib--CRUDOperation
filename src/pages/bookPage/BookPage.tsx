@@ -14,7 +14,7 @@ const BookPage: React.FC = () => {
       loopCount: Infinity,
       typeSpeed: 50,
       backDelay: 700,
-      backSpeed: 100
+      backSpeed: 100,
     });
     return () => {
       typed.destroy();
@@ -45,8 +45,8 @@ const BookPage: React.FC = () => {
             )}
             <h2 className="book__title">{book.title}</h2>
             <p className="book__description">{book.description}</p>
-            <span className='book__price'>$ {book.price}</span>
-            <div className='book__button'>
+            <span className="book__price">$ {book.price}</span>
+            <div className="book__button">
               <button className="delete">Delete</button>
               <button className="update">Update</button>
             </div>
