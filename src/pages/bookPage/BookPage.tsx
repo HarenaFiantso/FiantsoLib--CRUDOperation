@@ -16,7 +16,6 @@ const BookPage: React.FC = () => {
       backDelay: 700,
       backSpeed: 100
     });
-
     return () => {
       typed.destroy();
     };
