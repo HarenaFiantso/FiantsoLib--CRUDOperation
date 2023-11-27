@@ -15,7 +15,6 @@ const BookPage: React.FC = () => {
     };
     fetchAllBooks();
   }, []);
-  console.log(books);
 
   return (
     <>

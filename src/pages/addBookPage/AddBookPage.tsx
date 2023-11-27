@@ -26,8 +26,6 @@ const AddBookPage: React.FC = () => {
       setError(true);
     }
   };
-  console.log(book);
-  
 
   return (
     <div className="form">
