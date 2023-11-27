@@ -32,6 +32,15 @@ const BookPage: React.FC = () => {
     fetchAllBooks();
   }, []);
 
+  const handleDelete = async (id: number) => {
+    try {
+      await axios.delete(`http://localhost:8800/book/${id}`);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <h1 className="title">
@@ -47,7 +56,9 @@ const BookPage: React.FC = () => {
             <p className="book__description">{book.description}</p>
             <span className="book__price">$ {book.price}</span>
             <div className="book__button">
-              <button className="delete">Delete</button>
+              <button className="delete" onClick={() => handleDelete(book.id)}>
+                Delete
+              </button>
               <button className="update">Update</button>
             </div>
           </div>
