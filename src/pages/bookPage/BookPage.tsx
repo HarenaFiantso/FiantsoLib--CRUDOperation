@@ -1,9 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Book from '../../type/BookType';
 import axios from 'axios';
+import Typed from 'typed.js';
 
 const BookPage: React.FC = () => {
   const [books, setBooks] = useState<Book[]>([]);
+  const el = useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['My World', 'FiantsoLib !'],
+      loop: true,
+      loopCount: Infinity,
+      typeSpeed: 50,
+      backDelay: 700,
+      backSpeed: 100
+    });
+
+    return () => {
+      typed.destroy();
+    };
+  }, []);
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
@@ -19,7 +36,7 @@ const BookPage: React.FC = () => {
   return (
     <>
       <h1 className="title">
-        Welcome to <span>FiantsoLib</span>
+        Welcome to <span ref={el}>FiantsoLib</span>
       </h1>
       <div className="books">
         {books.map((book) => (
