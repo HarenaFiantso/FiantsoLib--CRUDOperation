@@ -30,6 +30,25 @@ app.get('/book/:id', async (req, res) => {
     res.status(500).send('Error while receiving book');
   }
 });
+app.post('/book', async (req, res) => {
+  const { title, description, price, cover } = req.body;
+  try {
+    const insertQuery = `
+        INSERT INTO book (title, description, price, cover) 
+        VALUES ($1, $2, $3, $4) 
+        RETURNING *
+      `;
+    const { rows } = await db.query(insertQuery, [
+      title,
+      description,
+      price,
+      cover,
+    ]);
+    res.status(201).json(rows[0]);
+  } catch (error) {
+    res.status(500).send('Error while creating book');
+  }
+});
 app.put('/book/:id', async (req, res) => {
   const bookId = parseInt(req.params.id);
   const { title, description, price, cover } = req.body;
