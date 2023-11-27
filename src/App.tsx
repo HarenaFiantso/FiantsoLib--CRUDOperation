@@ -6,15 +6,17 @@ import UpdateBookPage from './pages/updateBookPage/UpdateBookPage';
 const App = () => {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<BookPage />}></Route>
-          <Route path="/add" element={<AddBookPage />}></Route>
-          <Route path="/update/:id" element={<UpdateBookPage />}></Route>
-        </Routes>
-      </BrowserRouter>
+      <div className="app">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<BookPage />}></Route>
+            <Route path="/add" element={<AddBookPage />}></Route>
+            <Route path="/update/:id" element={<UpdateBookPage />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
     </>
   );
-}
+};
 
 export default App;

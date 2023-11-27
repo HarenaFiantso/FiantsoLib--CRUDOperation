@@ -25,7 +25,7 @@ const BookPage: React.FC = () => {
       <div className="books">
         {books.map((book) => (
           <div key={book.id} className="book">
-            <img src={book.cover} alt="book cover" />
+            {book.cover && <img src={book.cover} alt="book cover" />}
             <h2>{book.title}</h2>
             <p>{book.description}</p>
             <span>$ {book.price}</span>
