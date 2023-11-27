@@ -52,7 +52,6 @@ app.post('/book', async (req, res) => {
 app.put('/book/:id', async (req, res) => {
   const bookId = parseInt(req.params.id);
   const { title, description, price, cover } = req.body;
-
   try {
     const updateQuery = `
         UPDATE book 
@@ -73,6 +72,19 @@ app.put('/book/:id', async (req, res) => {
     res.json(rows[0]);
   } catch (error) {
     res.status(500).send('Erreur lors de la mise à jour du livre');
+  }
+});
+app.delete('/book/:id', async (req, res) => {
+  const bookId = parseInt(req.params.id);
+  try {
+    const deleteQuery = 'DELETE FROM book WHERE id = $1 RETURNING *';
+    const { rows } = await db.query(deleteQuery, [bookId]);
+    if (rows.length === 0) {
+      return res.status(404).send('Book not found');
+    }
+    res.json({ message: 'Book deleted successfully', deletedBook: rows[0] });
+  } catch (error) {
+    res.status(500).send('Error while deleting book');
   }
 });
 
